@@ -144,8 +144,8 @@ const codes = {
 "planta": "Zombaria da Natureza\nA verdade sobre elas se esconde\nNovas memórias se soubessem\nElas já foram outra coisa",
 "plantas": "Zombaria da Natureza\nA verdade sobre elas se esconde\nNovas memórias se soubessem\nElas já foram outra coisa",
 "zombaria": "Zombaria da Natureza\nA verdade sobre elas se esconde\nNovas memórias se soubessem\nElas já foram outra coisa",
-"zombaria da natureza": "Zombaria da Natureza\nA verdade sobre elas se esconde\nNovas memórias se soubessem\nElas já foram outra coisa",                                                                                                                                                                                                                                                                                                                                                             
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       "
+"zombaria da natureza": "Zombaria da Natureza\nA verdade sobre elas se esconde\nNovas memórias se soubessem\nElas já foram outra coisa"                                                                                                                                                                                                                                                                                                                                                          
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
 };
 
 document.addEventListener("keydown", () => {
@@ -194,6 +194,33 @@ document.getElementById("codeInput").addEventListener("keydown", function(e){
       text.style.textAlign = "center";
       text.style.fontSize = "18px";
       text.style.lineHeight = "1.6";
+
+      if (["yan","yan massoni","magmapocket","magmapocket!"].includes(value)) {
+
+  let img = document.createElement("img");
+  img.src = "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgBwW8rOgL_Ahf6ZQfWAECajo4sVMug9MI5B7qyvjP1k_rBAU3tkACNx-D9KIze_dZQEH892Chf88qP-_zMJfSi2U-t-7ej5bAc6mAgcOJmwrEvnOIFGD_d4Z6-n8Bjpe2cu7mR5M9n6mU/s1600/mussoumano_transparente006.png";
+
+  img.style.position = "absolute";
+  img.style.top = "50%";
+  img.style.left = "50%";
+  img.style.transform = "translate(-50%, -50%)";
+  img.style.maxWidth = "300px";
+
+  document.body.appendChild(img);
+
+  setTimeout(() => {
+    img.remove();
+    showScreen("final");
+
+    setTimeout(() => {
+      showScreen("terminal");
+      document.getElementById("inputBox").classList.remove("hidden");
+    }, 4000);
+
+  }, 4000);
+
+  return;
+}
 
       text.innerText = codes[value] || "Código desconhecido";
       document.body.appendChild(text);

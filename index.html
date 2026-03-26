@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Sistema</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+<style>
+body {
+  margin: 0;
+  overflow: hidden;
+  background: black;
+  font-family: 'Press Start 2P', monospace;
+  color: yellow;
+}
+
+.screen {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+.show {
+  opacity: 1;
+}
+
+.hidden {
+  display: none;
+}
+
+/* animação ... */
+.loadingDots::after {
+  content: '';
+  animation: dots 1.5s infinite steps(3);
+}
+
+@keyframes dots {
+  0% { content: ''; }
+  33% { content: '.'; }
+  66% { content: '..'; }
+  100% { content: '...'; }
+}
+
+#inputBox {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#inputBox input {
+  padding: 12px;
+  font-size: 16px;
+  border: 2px solid yellow;
+  background: rgba(255,255,0,0.2);
+  color: black;
+  text-align: center;
+  font-family: 'Press Start 2P', monospace;
+}
+</style>
+</head>
+
+<body>
+
+<img id="start" class="screen show" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjbxc7qZSI9xhtQlSaoIi4NRexY2SksaiOxyCRFkgGHImu7wrUX9-ko2pv5kPd-CEn_1_U2ItJu9fp4Qr0i9dfWAlDXZIoAJROlMJdU04Z025ts88aubm4_UNxopeTuJ230JXvjw531oK4vAeuLQxLiw5vGADa6D5VI8SiZcobfipAlRmz6BI6HhMvY3Ae3/s1920/1.png">
+<img id="loading" class="screen hidden" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhvCuQx75omGaLC2UmAnMhCq67JCloRQ4en4IePoxEYmlS7WJWJ7p_exg1cOz5EE-OUs_jzA2z-mJY81-CUxXCCc80YFe8-v0GsEsLHLkMCVVfcWakF1OqVJgSBLZSRrcEYwbssRGQaxuQvol3E8SqnZ3DYeD0NvGTQ0SH-7aQgvkQfIvMs7Gx0xN-Xf8w9/s1920/2.png">
+<img id="connecting" class="screen hidden" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEguqOoEd96DlOE13BPQTuiaVOtHypYKKnf8gsjyh6g5sC_Dv-Bj2INOPjrMVC2Jmbg_yZNI_s4FWXjoQ58bbVKBnIhv8WLSu1fEj_ajsqScz_ecMDqVvGs3tM_cG9b6i6rJg8s9yzzvQEEKYL_Ak7XKQ-7YVfN0BC-PkliQ3nPML3Mmk1InE-g4uP3Qauwm/s320/3.png">
+<img id="terminal" class="screen hidden" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgyMaF095a5ZRTqgt8KQySdGa1VLZohPPUWEU-RJNtILxyfSHXeC2geDuDDmDfY8_ryQxKFnhY__5z8z0Jf6PEqD1t5ydpiOHlX4sZcQO417822W5l8xCiIerpioWkmyCFJDB05AE1XXF9vX9yobIfaoNnB_rmabEwieqiV9ujCyIR5gPDr6q2u-H7nm0dc/w945-h600-p-k-no-nu/I%20(1).png">
+<img id="pre" class="screen hidden" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjQtiSGWSq9FG7kOFabD-kjtz9SrA7PJUcntHNUitU8M9-ksU_C4Xn-1LuZqRSf50dZS9x2NaHTDKoGOfIpH5rEe24rqhmMQVn0hmV7-vtCEMAv1dUNeBIybh172N1FkX2BXn1GVwNUaNd_QlLOvv-vdRKPt0-N51pSGdOxddutePIo2CB7cKy_aYrqeAeg/s320/5.png">
+<img id="result" class="screen hidden" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjwkrmKxZFhWjixTDEIRto01Z-s2pnoccZebLJnusU3t0wpi0hyJbibYlvAAtfa0MbePrcuHpGcHh55xNp3dwD7R3M61R8fQqOfyfm53i_We4EwbWpKP1TRSWHlsRKU0SK54ChNgRbmRyi0dwZLWf0ZYRKeeceT7Q0CIBuDIv5EXeBIX9HRE8-ds8zv3KU4/s320/I%20(3).png">
+<img id="final" class="screen hidden" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEigfnR_2822cT9gY1q4S4UkWjNRQx8F53OoNldWwnUtborbIxDtg-Cbqe1VzN6wgZ8K9IITcw0R4BZB5PT_K4J4oTYktUr9ehn0ysV76BX86_62DezZ5CZzSKRttBEC8NPpVBBcz2iFDwcDcU8hMKgaJt14mSxILD2XlxqEZRMcb6FweLgmLhNK7knRkony/s320/8.png">
+
+<div id="inputBox" class="hidden">
+  <input id="codeInput" placeholder="Digite o código...">
+</div>
+
+<script>
+const screens = ["start","loading","connecting","terminal","pre","result","final"];
+
+function showScreen(id){
+  screens.forEach(s => {
+    const el = document.getElementById(s);
+    el.classList.add("hidden");
+    el.classList.remove("show");
+  });
+
+  const target = document.getElementById(id);
+  target.classList.remove("hidden");
+
+  setTimeout(() => {
+    target.classList.add("show");
+  }, 50);
+}
+
+const codes = {
+"Monstro": "Embaixo dos seus pés\nRastejando pelo chão\nLigando ninhos á casas de família\nEles já foram outra coisa",
+"Eli": "Eli\nEli, nós somos Eli\nEli, Eli Nadler\nEli fará nossa ascensão",
+"Doença": "Enquanto bulbos continuam na pele\nSeus sonhos não são mais seus\nAo atingir os ossos\nAs raízes se movem livremente",
+"Layla": "Layla está com a gente agora\nLayla está com a gente agora\nLayla está com a gente agora\nLayla se tornou a gente agora"
+"Anastácio": "Seu poder é uma dádiva\nSuas escritas são belas\nAprendeu a lidar com raízes\nÉ um pilar",
+"Acampamento": "Novas coisas vagam pelos campos de alimentação\nAs colheitas sempre são frutíferas\nHóspedes ouvem um rangido\nRaízes foram bem-vindas",
+"Luka": "Um receptáculo foi encontrado\nSeu interior foi definido como ocupado\nPortava e protegia um pilar\nLuka se tornou a gente agora",
+"Raíz(es)": "Estão em todas as partes\nA semente do caos, foi plantada aqui\nPlanetas não resistem a tentação\nSão um pilar"
+"Ninho(s)": "Eli vê a Terra morrer por dentro\nLar da propagação do caos\nSua casa não lhe pertence mais\nOssos antigos crescem",
+"Jardim(ns)": "Eli vê a Terra morrer por dentro\nLar da propagação do caos\nSua casa não lhe pertence mais\nOssos antigos crescem",
+"Lewis": "Um acordo foi feito\nUm acordo não foi cumprido\nLinhagem despresíves carregará seu pecado\nDívidas serão cobradas",
+"Clive": "Um acordo foi feito\nHerdeiro de dívidas passadas\nAbrigará lares em seu lar\nMultiplicará sua população",
+"Ordem": "Esse lugar não tem salvação\nA Ordem os protegem em vão\nAinda assim, são incapazes e fracos\nNão é algo que deva se preocupar com",
+"Planta": "Zombaria da Natureza\nA verdade sobre elas se esconde\nNovas memórias se soubessem\nElas já foram outra coisa",
+"Eli Nadler": "Eli\nEli, nós somos Eli\nEli, Eli Nadler\nEli fará nossa ascensão",
+"doença": "Enquanto bulbos continuam na pele\nSeus sonhos não são mais seus\nAo atingir os ossos\nAs raízes se movem livremente",
+"Doença das Raízes": "Enquanto bulbos continuam na pele\nSeus sonhos não são mais seus\nAo atingir os ossos\nAs raízes se movem livremente",
+"Doença das Raízes Profundas": "Enquanto bulbos continuam na pele\nSeus sonhos não são mais seus\nAo atingir os ossos\nAs raízes se movem livremente",
+"Layla Paes": "Layla está com a gente agora\nLayla está com a gente agora\nLayla está com a gente agora\nLayla se tornou a gente agora"
+"Anastácio": "Seu poder é uma dádiva\nSuas escritas são belas\nAprendeu a lidar com raízes\nÉ um pilar",
+"Acampamento": "Novas coisas vagam pelos campos de alimentação\nAs colheitas sempre são frutíferas\nHóspedes ouvem um rangido\nRaízes foram bem-vindas",
+"Acampamento Lunar": "Novas coisas vagam pelos campos de alimentação\nAs colheitas sempre são frutíferas\nHóspedes ouvem um rangido\nRaízes foram bem-vindas",
+"Acampamento Lunar de Aki": "Novas coisas vagam pelos campos de alimentação\nAs colheitas sempre são frutíferas\nHóspedes ouvem um rangido\nRaízes foram bem-vindas",
+"Aranha de Luz": "Embaixo dos seus pés\nRastejando pelo chão\nLigando ninhos á casas de família\nEles já foram outra coisa",
+"Polvo de Luz": "Embaixo dos seus pés\nRastejando pelo chão\nLigando ninhos á casas de família\nEles já foram outra coisa",
+"Polvo": "Embaixo dos seus pés\nRastejando pelo chão\nLigando ninhos á casas de família\nEles já foram outra coisa",
+"Aranha": "Embaixo dos seus pés\nRastejando pelo chão\nLigando ninhos á casas de família\nEles já foram outra coisa",
+"Aranhas": "Embaixo dos seus pés\nRastejando pelo chão\nLigando ninhos á casas de família\nEles já foram outra coisa",
+"Monstro": "Embaixo dos seus pés\nRastejando pelo chão\nLigando ninhos á casas de família\nEles já foram outra coisa",
+"Monstros": "Embaixo dos seus pés\nRastejando pelo chão\nLigando ninhos á casas de família\nEles já foram outra coisa",
+"Luka": "Um receptáculo foi encontrado\nSeu interior foi definido como ocupado\nPortava e protegia um pilar\nLuka se tornou a gente agora",
+"Raíz(es)": "Estão em todas as partes\nA semente do caos, foi plantada aqui\nPlanetas não resistem a tentação\nSão um pilar"
+"Ninho(s)": "Eli vê a Terra morrer por dentro\nLar da propagação do caos\nSua casa não lhe pertence mais\nOssos antigos crescem",
+"Jardim(ns)": "Eli vê a Terra morrer por dentro\nLar da propagação do caos\nSua casa não lhe pertence mais\nOssos antigos crescem",
+"Lewis": "Um acordo foi feito\nUm acordo não foi cumprido\nLinhagem despresíves carregará seu pecado\nDívidas serão cobradas",
+"Lewis Aki": "Um acordo foi feito\nUm acordo não foi cumprido\nLinhagem despresíves carregará seu pecado\nDívidas serão cobradas",
+"Clive": "Um acordo foi feito\nHerdeiro de dívidas passadas\nAbrigará lares em seu lar\nMultiplicará sua população",
+"Clive Aki": "Um acordo foi feito\nHerdeiro de dívidas passadas\nAbrigará lares em seu lar\nMultiplicará sua população",
+"Ordem": "Esse lugar não tem salvação\nA Ordem os protegem em vão\nAinda assim, são incapazes e fracos\nNão é algo que deva se preocupar com",
+"Ordo Realitas": "Esse lugar não tem salvação\nA Ordem os protegem em vão\nAinda assim, são incapazes e fracos\nNão é algo que deva se preocupar com",
+"Planta": "Zombaria da Natureza\nA verdade sobre elas se esconde\nNovas memórias se soubessem\nElas já foram outra coisa",
+"Plantas": "Zombaria da Natureza\nA verdade sobre elas se esconde\nNovas memórias se soubessem\nElas já foram outra coisa",
+"Zombaria": "Zombaria da Natureza\nA verdade sobre elas se esconde\nNovas memórias se soubessem\nElas já foram outra coisa",
+"Zombaria da Natureza": "Zombaria da Natureza\nA verdade sobre elas se esconde\nNovas memórias se soubessem\nElas já foram outra coisa",
+};
+
+document.addEventListener("keydown", () => {
+
+  showScreen("loading");
+
+  let loadingText = document.createElement("div");
+  loadingText.className = "loadingDots";
+  loadingText.style.position = "absolute";
+  loadingText.style.top = "80%";
+  loadingText.style.left = "50%";
+  loadingText.style.transform = "translateX(-50%)";
+  loadingText.innerText = "Carregando";
+  document.body.appendChild(loadingText);
+
+  setTimeout(() => {
+    showScreen("connecting");
+
+    setTimeout(() => {
+      loadingText.remove();
+      showScreen("terminal");
+      document.getElementById("inputBox").classList.remove("hidden");
+    }, 5000);
+
+  }, 5000);
+
+}, { once: true });
+
+document.getElementById("codeInput").addEventListener("keydown", function(e){
+  if(e.key === "Enter"){
+
+    let value = this.value.toLowerCase();
+    this.value = "";
+
+    showScreen("pre");
+    document.getElementById("inputBox").classList.add("hidden");
+
+    setTimeout(() => {
+      showScreen("result");
+
+      let text = document.createElement("div");
+      text.style.position = "absolute";
+      text.style.top = "50%";
+      text.style.left = "50%";
+      text.style.transform = "translate(-50%, -50%)";
+      text.style.textAlign = "center";
+      text.style.fontSize = "18px";
+      text.style.lineHeight = "1.6";
+
+      text.innerText = codes[value] || "Código desconhecido";
+      document.body.appendChild(text);
+
+      setTimeout(() => {
+        text.style.transition = "opacity 1s";
+        text.style.opacity = "0";
+      }, 3000);
+
+      setTimeout(() => {
+        text.remove();
+        showScreen("final");
+
+        setTimeout(() => {
+          showScreen("terminal");
+          document.getElementById("inputBox").classList.remove("hidden");
+        }, 4000);
+
+      }, 5000);
+
+    }, 4000);
+  }
+});
+</script>
+
+</body>
+</html>

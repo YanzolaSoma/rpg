@@ -73,13 +73,14 @@ body {
 <img id="pre" class="screen hidden" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhbjH6dLTu-Xr22GQI50_OR1wdaMshQKycGANCrEy9ch4A90AkcQcfrdjYfB-XZpdthh-rVY28s1SPBFVDbzTCJ2zMiVapDeoxzt9pBcAg6Jb4Mgm5dtMetqBhGZAnp37-gfYelsBbMTLMM94ozNPL2p2FYD5QlPO6S2FMUoibAYYCwu7ltgA-YzxxKYbeM/s1920/I%20(4).png">
 <img id="result" class="screen hidden" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgW7agkjVmcPPd5P6HEAxJN_PbmofXKDn4sn33z-ZzvhQRHutTkxh7Pz9w7ia5ZK2wJ1yviuLmq6p1UuGj5Tz5cYQwG72TXShEP5uAK66FtnqOywSVf6M8XdM75VcQGUwcSxEP3qlhhbfUu7JF-gXe61CJAMcEXrsS2yHioq2-z5xRY-pXomjsJ3P-HRKty/s1920/I%20(5).png">
 <img id="final" class="screen hidden" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEii9njKx4bE99a4TD_mNzN976nRjDZgDKcgVUYSbJu8zyjBTg0_Y6Lk9ZvIaEfW4Pom0YLe-0sP_DJxdseEkQ7trmywm65X2jJIbFj8FAsaijeP2PMVv5s0qXgBOzSu6DGlo-9oTcGatR-Z7CosaTtQ7Fjo5suXkEpJ1RoKczsqnOfM_LmsM-xu_ALprzq1/s1920/I%20(6).png">
-
+<img id="notfound" class="screen hidden" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiXzG1W-_9zjC8gZebeBJOHjmwRUsE42HHTg2qhlbEZhQIK5Gs8fhEwBFIunyimVq0TXSMhghc1FCBoapJBOzv1VsICuq_1Jn0ycAZ_-NmIvUSRZJWMOBJ9NpH7uKJeJXFuwzoQWUG2-6ccHphcxTS4OCmmwxq1yHLC7KeyTne857KlFvLaYobnGlmx8bNn/s1920/I%20(7).png">
+  
 <div id="inputBox" class="hidden">
   <input id="codeInput" placeholder="AAAAAA" color="black">
 </div>
 
 <script>
-const screens = ["start","loading","connecting","terminal","pre","result","final"];
+const screens = ["start","loading","connecting","terminal","pre","result","final","notfound"];
 
 function showScreen(id){
   screens.forEach(s => {
@@ -229,8 +230,28 @@ document.getElementById("codeInput").addEventListener("keydown", function(e){
   return;
 }
 
-      text.innerText = codes[value] || "NÃO CATALOGADO";
-      document.body.appendChild(text);
+      if (codes[value]) {
+
+  text.innerText = codes[value];
+  document.body.appendChild(text);
+
+} else {
+
+  showScreen("notfound");
+
+  setTimeout(() => {
+    showScreen("final");
+
+    setTimeout(() => {
+      showScreen("terminal");
+      document.getElementById("inputBox").classList.remove("hidden");
+    }, 4000);
+
+  }, 4000);
+
+  return;
+}
+      
 
       setTimeout(() => {
         text.style.transition = "opacity 1s";

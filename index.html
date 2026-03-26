@@ -32,7 +32,6 @@ body {
   display: none;
 }
 
-/* animação ... */
 .loadingDots::after {
   content: '';
   animation: dots 1.5s infinite steps(3);
@@ -74,12 +73,15 @@ body {
 <img id="result" class="screen hidden" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgW7agkjVmcPPd5P6HEAxJN_PbmofXKDn4sn33z-ZzvhQRHutTkxh7Pz9w7ia5ZK2wJ1yviuLmq6p1UuGj5Tz5cYQwG72TXShEP5uAK66FtnqOywSVf6M8XdM75VcQGUwcSxEP3qlhhbfUu7JF-gXe61CJAMcEXrsS2yHioq2-z5xRY-pXomjsJ3P-HRKty/s1920/I%20(5).png">
 <img id="final" class="screen hidden" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEii9njKx4bE99a4TD_mNzN976nRjDZgDKcgVUYSbJu8zyjBTg0_Y6Lk9ZvIaEfW4Pom0YLe-0sP_DJxdseEkQ7trmywm65X2jJIbFj8FAsaijeP2PMVv5s0qXgBOzSu6DGlo-9oTcGatR-Z7CosaTtQ7Fjo5suXkEpJ1RoKczsqnOfM_LmsM-xu_ALprzq1/s1920/I%20(6).png">
 
+<!-- NOVA TELA -->
+<img id="notfound" class="screen hidden" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiXzG1W-_9zjC8gZebeBJOHjmwRUsE42HHTg2qhlbEZhQIK5Gs8fhEwBFIunyimVq0TXSMhghc1FCBoapJBOzv1VsICuq_1Jn0ycAZ_-NmIvUSRZJWMOBJ9NpH7uKJeJXFuwzoQWUG2-6ccHphcxTS4OCmmwxq1yHLC7KeyTne857KlFvLaYobnGlmx8bNn/s1920/I%20(7).png">
+
 <div id="inputBox" class="hidden">
-  <input id="codeInput" placeholder="AAAAAA" color="black">
+  <input id="codeInput" placeholder="AAAAAA">
 </div>
 
 <script>
-const screens = ["start","loading","connecting","terminal","pre","result","final"];
+const screens = ["start","loading","connecting","terminal","pre","result","final","notfound"];
 
 function showScreen(id){
   screens.forEach(s => {
@@ -97,62 +99,7 @@ function showScreen(id){
 }
 
 const codes = {
-
-"eli": "ELI\nELI, NÓS SOMOS ELI\nELI, ELI NADLER\nELI FARÁ NOSSA ASCENSÃO",
-"eli nadler": "ELI\nELI, NÓS SOMOS ELI\nELI, ELI NADLER\nELI FARÁ NOSSA ASCENSÃO",
-
-"doença": "ENQUANTO BULBOS CONTINUAM NA PELE\nSEUS SONHOS NÃO SÃO MAIS SEUS\nAO ATINGIR OS OSSOS\nAS RAÍZES SE MOVEM LIVREMENTE",
-"doença das raízes": "ENQUANTO BULBOS CONTINUAM NA PELE\nSEUS SONHOS NÃO SÃO MAIS SEUS\nAO ATINGIR OS OSSOS\nAS RAÍZES SE MOVEM LIVREMENTE",
-"doença das raízes profundas": "ENQUANTO BULBOS CONTINUAM NA PELE\nSEUS SONHOS NÃO SÃO MAIS SEUS\nAO ATINGIR OS OSSOS\nAS RAÍZES SE MOVEM LIVREMENTE",
-
-"layla": "LAYLA ESTÁ COM A GENTE AGORA\nLAYLA ESTÁ COM A GENTE AGORA\nLAYLA ESTÁ COM A GENTE AGORA\nLAYLA SE TORNOU A GENTE AGORA",
-"layla paes": "LAYLA ESTÁ COM A GENTE AGORA\nLAYLA ESTÁ COM A GENTE AGORA\nLAYLA ESTÁ COM A GENTE AGORA\nLAYLA SE TORNOU A GENTE AGORA",
-
-"anastácio": "SEU PODER É UMA DÁDIVA\nSUAS ESCRITAS SÃO BELAS\nAPRENDEU A LIDAR COM RAÍZES\nÉ UM PILAR",
-
-"acampamento": "NOVAS COISAS VAGAM PELOS CAMPOS DE ALIMENTAÇÃO\nAS COLHEITAS SEMPRE SÃO FRUTÍFERAS\nHÓSPEDES OUVEM UM RANGIDO\nRAÍZES FORAM BEM-VINDAS",
-"acampamento lunar": "NOVAS COISAS VAGAM PELOS CAMPOS DE ALIMENTAÇÃO\nAS COLHEITAS SEMPRE SÃO FRUTÍFERAS\nHÓSPEDES OUVEM UM RANGIDO\nRAÍZES FORAM BEM-VINDAS",
-"acampamento lunar de aki": "NOVAS COISAS VAGAM PELOS CAMPOS DE ALIMENTAÇÃO\nAS COLHEITAS SEMPRE SÃO FRUTÍFERAS\nHÓSPEDES OUVEM UM RANGIDO\nRAÍZES FORAM BEM-VINDAS",
-"campo de alimentação": "NOVAS COISAS VAGAM PELOS CAMPOS DE ALIMENTAÇÃO\nAS COLHEITAS SEMPRE SÃO FRUTÍFERAS\nHÓSPEDES OUVEM UM RANGIDO\nRAÍZES FORAM BEM-VINDAS",
-"campos de alimentação": "NOVAS COISAS VAGAM PELOS CAMPOS DE ALIMENTAÇÃO\nAS COLHEITAS SEMPRE SÃO FRUTÍFERAS\nHÓSPEDES OUVEM UM RANGIDO\nRAÍZES FORAM BEM-VINDAS",
-
-"aranha": "EMBAIXO DE SEUS PÉS\nRASTEJANDO PELO CHÃO\nLIGANDO NINHOS Á CASAS DE FAMÍLIA\nELES JÁ FORAM OUTRA COISA",
-"aranhas": "EMBAIXO DE SEUS PÉS\nRASTEJANDO PELO CHÃO\nLIGANDO NINHOS Á CASAS DE FAMÍLIA\nELES JÁ FORAM OUTRA COISA",
-"aranha de luz": "EMBAIXO DE SEUS PÉS\nRASTEJANDO PELO CHÃO\nLIGANDO NINHOS Á CASAS DE FAMÍLIA\nELES JÁ FORAM OUTRA COISA",
-"aranhas de luz": "EMBAIXO DE SEUS PÉS\nRASTEJANDO PELO CHÃO\nLIGANDO NINHOS Á CASAS DE FAMÍLIA\nELES JÁ FORAM OUTRA COISA",
-"polvo": "EMBAIXO DE SEUS PÉS\nRASTEJANDO PELO CHÃO\nLIGANDO NINHOS Á CASAS DE FAMÍLIA\nELES JÁ FORAM OUTRA COISA",
-"polvos": "EMBAIXO DE SEUS PÉS\nRASTEJANDO PELO CHÃO\nLIGANDO NINHOS Á CASAS DE FAMÍLIA\nELES JÁ FORAM OUTRA COISA",
-"polvo de luz": "EMBAIXO DE SEUS PÉS\nRASTEJANDO PELO CHÃO\nLIGANDO NINHOS Á CASAS DE FAMÍLIA\nELES JÁ FORAM OUTRA COISA",
-"polvos de luz": "EMBAIXO DE SEUS PÉS\nRASTEJANDO PELO CHÃO\nLIGANDO NINHOS Á CASAS DE FAMÍLIA\nELES JÁ FORAM OUTRA COISA",
-
-"luka": "UM RECEPTÁCULO FOI ENCONTRADO\nSEU INTERIOR FOI DEFINIDO COMO OCUPADO\nPORTAVA E PROTEGIA UM PILAR\nLUKA SE TORNOU A GENTE AGORA",
-"luka fuchs": "UM RECEPTÁCULO FOI ENCONTRADO\nSEU INTERIOR FOI DEFINIDO COMO OCUPADO\nPORTAVA E PROTEGIA UM PILAR\nLUKA SE TORNOU A GENTE AGORA",
-
-"raíz": "ESTÃO EM TODAS AS PARTES\nA SEMENTE DO CAOS, FOI PLANTADA AQUI\n//////// NÃO RESISTEM A TENTAÇÃO\nSÃO UM PILAR",
-"raízes": "ESTÃO EM TODAS AS PARTES\nA SEMENTE DO CAOS, FOI PLANTADA AQUI\n//////// NÃO RESISTEM A TENTAÇÃO\nSÃO UM PILAR",
-
-"ninho": "ELI VÊ A TERRA MORRER POR DENTRO\nLAR DA PROPAGAÇÃO DO CAOS\nSUA CASA NÃO LHE PERTENCE MAIS\nOSSOS ANTIGOS CRESCEM",
-"ninhos": "ELI VÊ A TERRA MORRER POR DENTRO\nLAR DA PROPAGAÇÃO DO CAOS\nSUA CASA NÃO LHE PERTENCE MAIS\nOSSOS ANTIGOS CRESCEM",
-"jardim": "ELI VÊ A TERRA MORRER POR DENTRO\nLAR DA PROPAGAÇÃO DO CAOS\nSUA CASA NÃO LHE PERTENCE MAIS\nOSSOS ANTIGOS CRESCEM",
-"jardins": "ELI VÊ A TERRA MORRER POR DENTRO\nLAR DA PROPAGAÇÃO DO CAOS\nSUA CASA NÃO LHE PERTENCE MAIS\nOSSOS ANTIGOS CRESCEM",
-
-"lewis": "UM ACORDO FOI FEITO\nUM ACORDO NÃO FOI TRANQUILO\nSUA LINHAGEM DESPREZÍVEL CARREGARÁ SEU PEGADO\nDÍVIDAS FORAM COBRADAS",
-"lewis aki": "UM ACORDO FOI FEITO\nUM ACORDO NÃO FOI TRANQUILO\nSUA LINHAGEM DESPREZÍVEL CARREGARÁ SEU PEGADO\nDÍVIDAS FORAM COBRADAS",
-
-"clive": "UM ACORDO FOI FEITO\nHERDEIRO DE DÍVIDAS PASSADAS\nABRIGARÁ LARES EM SEU LAR\nMULTIPLICARÁ NOSSA POPULAÇÃO",
-"clive aki": "UM ACORDO FOI FEITO\nHERDEIRO DE DÍVIDAS PASSADAS\nABRIGARÁ LARES EM SEU LAR\nMULTIPLICARÁ NOSSA POPULAÇÃO",
-
-"ordem": "PARA ESSE LUGAR, NÃO HÁ SALVAÇÃO\nA ORDEM OS PROTEGEM EM VÃO\nAINDA ASSIM, SÃO INCAPAZES E FRACOS\nNÃO É ALGO QUE DEVA SE PREOCUPAR COM",
-"ordo realitas": "PARA ESSE LUGAR, NÃO HÁ SALVAÇÃO\nA ORDEM OS PROTEGEM EM VÃO\nAINDA ASSIM, SÃO INCAPAZES E FRACOS\nNÃO É ALGO QUE DEVA SE PREOCUPAR COM",
-
-"planta": "ZOMBARIA DA NATUREZA\nA VERDADE SOBRE ELAS SE ESCONDE\nNOVAS MEMÓRIAS SE SOBRESSAEM\nELAS JÁ FORAM OUTRA COISA",
-"plantas": "ZOMBARIA DA NATUREZA\nA VERDADE SOBRE ELAS SE ESCONDE\nNOVAS MEMÓRIAS SE SOBRESSAEM\nELAS JÁ FORAM OUTRA COISA",
-"zombaria": "ZOMBARIA DA NATUREZA\nA VERDADE SOBRE ELAS SE ESCONDE\nNOVAS MEMÓRIAS SE SOBRESSAEM\nELAS JÁ FORAM OUTRA COISA",
-"zombaria da natureza": "ZOMBARIA DA NATUREZA\nA VERDADE SOBRE ELAS SE ESCONDE\nNOVAS MEMÓRIAS SE SOBRESSAEM\nELAS JÁ FORAM OUTRA COISA",
-
-"alberto": "ESCOLHIDO POR ELI PARA //////////\n/////////////////////////\n///////////////\n/////////////////////////////////////////////////",
-"alberto luci": "ESCOLHIDO POR ELI PARA //////////\n/////////////////////////\n///////////////\n/////////////////////////////////////////////////",
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
+  "eli": "ELI\nELI, NÓS SOMOS ELI\nELI, ELI NADLER\nELI FARÁ NOSSA ASCENSÃO"
 };
 
 document.addEventListener("keydown", () => {
@@ -199,54 +146,37 @@ document.getElementById("codeInput").addEventListener("keydown", function(e){
       text.style.left = "50%";
       text.style.transform = "translate(-50%, -50%)";
       text.style.textAlign = "center";
-      text.style.fontSize = "18px";
-      text.style.lineHeight = "1.6";
 
-      if (["yan","yan massoni","magmapocket","magmapocket!"].includes(value)) {
+      if (codes[value]) {
 
-  let img = document.createElement("img");
-  img.src = "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgBwW8rOgL_Ahf6ZQfWAECajo4sVMug9MI5B7qyvjP1k_rBAU3tkACNx-D9KIze_dZQEH892Chf88qP-_zMJfSi2U-t-7ej5bAc6mAgcOJmwrEvnOIFGD_d4Z6-n8Bjpe2cu7mR5M9n6mU/s1600/mussoumano_transparente006.png";
-
-  img.style.position = "absolute";
-  img.style.top = "50%";
-  img.style.left = "50%";
-  img.style.transform = "translate(-50%, -50%)";
-  img.style.maxWidth = "300px";
-
-  document.body.appendChild(img);
-
-  setTimeout(() => {
-    img.remove();
-    showScreen("final");
-
-    setTimeout(() => {
-      showScreen("terminal");
-      document.getElementById("inputBox").classList.remove("hidden");
-    }, 4000);
-
-  }, 4000);
-
-  return;
-}
-
-      text.innerText = codes[value] || "NÃO CATALOGADO";
-      document.body.appendChild(text);
-
-      setTimeout(() => {
-        text.style.transition = "opacity 1s";
-        text.style.opacity = "0";
-      }, 3000);
-
-      setTimeout(() => {
-        text.remove();
-        showScreen("final");
+        text.innerText = codes[value];
+        document.body.appendChild(text);
 
         setTimeout(() => {
-          showScreen("terminal");
-          document.getElementById("inputBox").classList.remove("hidden");
-        }, 4000);
+          text.remove();
+          showScreen("final");
 
-      }, 5000);
+          setTimeout(() => {
+            showScreen("terminal");
+            document.getElementById("inputBox").classList.remove("hidden");
+          }, 4000);
+
+        }, 5000);
+
+      } else {
+
+        showScreen("notfound");
+
+        setTimeout(() => {
+          showScreen("final");
+
+          setTimeout(() => {
+            showScreen("terminal");
+            document.getElementById("inputBox").classList.remove("hidden");
+          }, 4000);
+
+        }, 4000);
+      }
 
     }, 4000);
   }

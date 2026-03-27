@@ -32,7 +32,6 @@ body {
   display: none;
 }
 
-/* animação ... */
 .loadingDots::after {
   content: '';
   animation: dots 1.5s infinite steps(3);
@@ -54,7 +53,7 @@ body {
 
 #inputBox input {
   padding: 12px;
-  font-size: 16px;
+  font-size: 18px;
   border: 2px solid yellow;
   background: rgba(255,255,0,1);
   color: black;
@@ -151,8 +150,8 @@ const codes = {
 "zombaria": "ZOMBARIA DA NATUREZA\nA VERDADE SOBRE ELAS SE ESCONDE\nNOVAS MEMÓRIAS SE SOBRESSAEM\nELAS JÁ FORAM OUTRA COISA",
 "zombaria da natureza": "ZOMBARIA DA NATUREZA\nA VERDADE SOBRE ELAS SE ESCONDE\nNOVAS MEMÓRIAS SE SOBRESSAEM\nELAS JÁ FORAM OUTRA COISA",
 
-"alberto": "ESCOLHIDO POR ELI PARA //////////\n/////////////////////////\n///////////////\n/////////////////////////////////////////////////",
-"alberto luci": "ESCOLHIDO POR ELI PARA //////////\n/////////////////////////\n///////////////\n/////////////////////////////////////////////////",
+"alberto": "ESCOLHIDO POR ELI PARA SFPRHOPSDF\nIEKIOBDSYBOQTNCIFKQT\nINQYNYPVKRAFOATNBSHCREBSTHBSRA\nNXBYGRLARPYKKLFKFAHPCQ",
+"alberto luci": "ESCOLHIDO POR ELI PARA SFPRHOPSDF\nIEKIOBDSYBOQTNCIFKQT\nINQYNYPVKRAFOATNBSHCREBSTHBSRA\nNXBYGRLARPYKKLFKFAHPCQ",
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
 };
 
@@ -163,10 +162,11 @@ document.addEventListener("keydown", () => {
   let loadingText = document.createElement("div");
   loadingText.className = "loadingDots";
   loadingText.style.position = "absolute";
-  loadingText.style.top = "80%";
+  loadingText.style.fontSize = "48px";
+  loadingText.style.top = "70%";
   loadingText.style.left = "50%";
   loadingText.style.transform = "translateX(-50%)";
-  loadingText.innerText = "CARREGANDO";
+  loadingText.innerText = "";
   document.body.appendChild(loadingText);
 
   setTimeout(() => {
@@ -188,11 +188,21 @@ document.getElementById("codeInput").addEventListener("keydown", function(e){
     let value = this.value.toLowerCase();
     this.value = "";
 
-    showScreen("pre");
-    document.getElementById("inputBox").classList.add("hidden");
+showScreen("pre");
+document.getElementById("inputBox").classList.add("hidden");
 
-    setTimeout(() => {
-      showScreen("result");
+let preLoading = document.createElement("div");
+preLoading.className = "loadingDots";
+preLoading.style.fontSize = "48px";
+preLoading.style.position = "absolute";
+preLoading.style.top = "70%";
+preLoading.style.left = "50%";
+preLoading.style.transform = "translateX(-50%)";
+document.body.appendChild(preLoading);
+
+setTimeout(() => {
+  preLoading.remove();
+  showScreen("result");
 
       let text = document.createElement("div");
       text.style.position = "absolute";

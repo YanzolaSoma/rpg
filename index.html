@@ -73,13 +73,17 @@ body {
 <img id="result" class="screen hidden" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgW7agkjVmcPPd5P6HEAxJN_PbmofXKDn4sn33z-ZzvhQRHutTkxh7Pz9w7ia5ZK2wJ1yviuLmq6p1UuGj5Tz5cYQwG72TXShEP5uAK66FtnqOywSVf6M8XdM75VcQGUwcSxEP3qlhhbfUu7JF-gXe61CJAMcEXrsS2yHioq2-z5xRY-pXomjsJ3P-HRKty/s1920/I%20(5).png">
 <img id="final" class="screen hidden" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEii9njKx4bE99a4TD_mNzN976nRjDZgDKcgVUYSbJu8zyjBTg0_Y6Lk9ZvIaEfW4Pom0YLe-0sP_DJxdseEkQ7trmywm65X2jJIbFj8FAsaijeP2PMVv5s0qXgBOzSu6DGlo-9oTcGatR-Z7CosaTtQ7Fjo5suXkEpJ1RoKczsqnOfM_LmsM-xu_ALprzq1/s1920/I%20(6).png">
 <img id="notfound" class="screen hidden" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiXzG1W-_9zjC8gZebeBJOHjmwRUsE42HHTg2qhlbEZhQIK5Gs8fhEwBFIunyimVq0TXSMhghc1FCBoapJBOzv1VsICuq_1Jn0ycAZ_-NmIvUSRZJWMOBJ9NpH7uKJeJXFuwzoQWUG2-6ccHphcxTS4OCmmwxq1yHLC7KeyTne857KlFvLaYobnGlmx8bNn/s1920/I%20(7).png">
-  
+<img id="hbv1" class = "screen hidden" src="https://blogger.googleusercontent.com/img/a/AVvXsEiYvZOX4eMw1wFvMx_A7_ab4EoGI2i8vC4iXdoXfAAu220Sif4eWPhy-OSzgPxLoAoaS9U9BCAJqu3RuZSEtwJUgaxpVs6QCS8JzifSppgy0icHZa3d9klIIlbbZC8Xg7q9qagC4S-jJtGMyizAzPKSZcVq3YPZ_BnRi1umxSuqopd12r3BSHBrLV0zQmO1">
+<img id="hbv2" class = "screen hidden" src="https://blogger.googleusercontent.com/img/a/AVvXsEgK-vrw8DvGLIF7ojZH-kt-IEOJ7twzFULchVWRkIcWRQtu4FXX9C5Gs93dU6dCot3GJh7ZCwcCPX0Pf_1t8HkJl2p38eXRTc05cTXZRvNlRTDqpVGSzVwaJ9ZNYH1Cj3IzsVUaBzp7XZ_JCiPyw7srpWl66URa5r2Ii90GlIQPYH9aqwUvK9tEKmEVu8DH">
+<img id="hbv3" class = "screen hidden" src="https://blogger.googleusercontent.com/img/a/AVvXsEh2heKHiclVHtoZ-X6YMVo56-WG4NsnVoe79CTPHSp4Y1QuSS1IBxV0S7fgQE79MnpbDqNQUua-N7vKkkrhKSpwd-qY5FS5OSOTvQr4NsKjFERTRPirq5uYfe5Tt9JpiCYxSSVFq0BxFoH7tUqJ1-osUdsycIkqwYW3vv6qlTkUoFmNP_f7rrDDqhI3vYdx">
+<img id="hbv4" class = "screen hidden" src="https://blogger.googleusercontent.com/img/a/AVvXsEj_F5JekV4vAMx2QxB0N4B2luey6yL6mUoXUJLfk4wyNhYidjGa-Y85X9swJ04N6aBBi_ZlQOlUMvJFboRPUnOUbYnBuH2134lEc6A8c7L0v6G3-69CstNjIZxO8Wm4nlMHS21ojF_BnbaoygUN9sV1zMcEe2Ennhwcd7USkwwDHzheQxP3SW2zZ9uyExJ6">
+
 <div id="inputBox" class="hidden">
   <input id="codeInput" placeholder="AAAAAA" color="black">
 </div>
 
 <script>
-const screens = ["start","loading","connecting","terminal","pre","result","final","notfound"];
+const screens = ["start","loading","connecting","terminal","pre","result","final","notfound","hbv1","hbv2","hbv3","hbv4"];
 
 function showScreen(id){
   screens.forEach(s => {
@@ -155,6 +159,17 @@ const codes = {
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
 };
 
+function showLinesSequentially(element, text) {
+  const lines = text.split("\n");
+  element.innerText = "";
+
+  lines.forEach((line, index) => {
+    setTimeout(() => {
+      element.innerText += (index > 0 ? "\n" : "") + line;
+    }, index * 2000);
+  });
+}
+  
 document.addEventListener("keydown", () => {
 
   showScreen("loading");
@@ -213,6 +228,40 @@ setTimeout(() => {
       text.style.fontSize = "18px";
       text.style.lineHeight = "1.6";
 
+  if (value === "homens bem-vestidos") {
+
+  showScreen("pre");
+
+  setTimeout(() => {
+    showScreen("hbv1");
+
+    setTimeout(() => {
+      showScreen("hbv2");
+    }, 2000);
+
+    setTimeout(() => {
+      showScreen("hbv3");
+    }, 4000);
+
+    setTimeout(() => {
+      showScreen("hbv4");
+    }, 6000);
+
+    setTimeout(() => {
+      showScreen("final");
+
+      setTimeout(() => {
+        showScreen("terminal");
+        document.getElementById("inputBox").classList.remove("hidden");
+      }, 4000);
+
+    }, 8000);
+
+  }, 4000);
+
+  return;
+}
+
       if (["yan","yan massoni","magmapocket","magmapocket!"].includes(value)) {
 
   let img = document.createElement("img");
@@ -240,10 +289,10 @@ setTimeout(() => {
   return;
 }
 
-      if (codes[value]) {
+if (codes[value]) {
 
-  text.innerText = codes[value];
   document.body.appendChild(text);
+  showLinesSequentially(text, codes[value]);
 
 } else {
 
@@ -266,7 +315,7 @@ setTimeout(() => {
       setTimeout(() => {
         text.style.transition = "opacity 1s";
         text.style.opacity = "0";
-      }, 3000);
+      }, 7000);
 
       setTimeout(() => {
         text.remove();
@@ -277,7 +326,7 @@ setTimeout(() => {
           document.getElementById("inputBox").classList.remove("hidden");
         }, 4000);
 
-      }, 5000);
+      }, 8000);
 
     }, 4000);
   }

@@ -108,6 +108,11 @@ const screens = ["start","loading","connecting","terminal","pre","result","final
 
 function showScreen(id){
 
+  // 🔊 Garantir que o Ruido toque em todas as telas
+if (["start","loading","connecting","terminal","pre","result","final","notfound"].includes(id)) {
+    bgSound.play().catch(()=>{});  // toca o Ruído
+}
+
   screens.forEach(s => {
     const el = document.getElementById(s);
     el.classList.add("hidden");
@@ -220,7 +225,6 @@ function showLinesSequentially(element, text) {
   
 document.addEventListener("keydown", () => {
 
-  bgSound.play().catch(()=>{});
   enterSound.play().catch(()=>{});
 
   showScreen("loading");

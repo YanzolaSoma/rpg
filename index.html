@@ -154,12 +154,9 @@ if (["start","loading","connecting","terminal","pre","result","final","notfound"
     preSound.currentTime = 0;
   }
 
-  // 🔊 trilha HBV (hbv1 → hbv4)
+  // 🔊 HBV (hbv1 → hbv4)
 if (["hbv1","hbv2","hbv3","hbv4"].includes(id)) {
-  // só toca se ainda não estiver tocando
-  if (hbvSound.paused) {
-    hbvSound.play().catch(()=>{});
-  }
+  hbvSound.play().catch(()=>{});
 } else {
   hbvSound.pause();
   hbvSound.currentTime = 0;

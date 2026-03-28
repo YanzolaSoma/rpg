@@ -88,6 +88,7 @@ body {
 <audio id="signalSound" src="CaptandoSinal.mp3" loop></audio>
 <audio id="preSound" src="Pre.mp3" loop></audio>
 <audio id="hbvSound" src="HBV.mp3" loop></audio>
+<audio id="errorSound" src="Erro.mp3" loop></audio>
   
 <script>
 
@@ -97,6 +98,9 @@ const beepSound = document.getElementById("beepSound");
 const signalSound = document.getElementById("signalSound");
 const preSound = document.getElementById("preSound");
 const hbvSound = document.getElementById("hbvSound");
+const errorSound = document.getElementById("errorSound");
+
+let isAlberto = false;
 
 function stopAllLoops() {
   signalSound.pause();
@@ -160,6 +164,12 @@ if (["hbv1","hbv2","hbv3","hbv4"].includes(id)) {
 } else {
   hbvSound.pause();
   hbvSound.currentTime = 0;
+}
+
+  // 🔊 parar erro ao sair
+if (id === "final") {
+  errorSound.pause();
+  errorSound.currentTime = 0;
 }
 }
 
@@ -267,7 +277,10 @@ document.addEventListener("keydown", () => {
 document.getElementById("codeInput").addEventListener("keydown", function(e){
   if(e.key === "Enter"){
 
-    let value = this.value.toLowerCase();
+    let value = this.value.toLowerCase().trim();
+
+// detectar alberto
+isAlberto = ["alberto", "alberto luci"].includes(value);
     this.value = "";
 
 showScreen("pre");
@@ -354,6 +367,11 @@ enterSound.currentTime = 0;
 enterSound.play().catch(()=>{});
 
   document.body.appendChild(text);
+
+if (isAlberto) {
+  errorSound.currentTime = 0;
+  errorSound.play().catch(()=>{});
+}
   showLinesSequentially(text, codes[value]);
 
 } else {

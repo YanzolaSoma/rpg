@@ -87,8 +87,6 @@ body {
 <audio id="beepSound" src="Mensagem.mp3"></audio>
 <audio id="signalSound" src="CaptandoSinal.mp3" loop></audio>
 <audio id="preSound" src="Pre.mp3" loop></audio>
-<audio id="hbvSound" src="HBV.mp3" loop></audio>
-<audio id="errorSound" src="Erro.mp3" loop></audio>
   
 <script>
 
@@ -97,7 +95,6 @@ const enterSound = document.getElementById("enterSound");
 const beepSound = document.getElementById("beepSound");
 const signalSound = document.getElementById("signalSound");
 const preSound = document.getElementById("preSound");
-const hbvSound = document.getElementById("hbvSound");
 
 function stopAllLoops() {
   signalSound.pause();
@@ -154,17 +151,6 @@ if (["start","loading","connecting","terminal","pre","result","final","notfound"
     preSound.pause();
     preSound.currentTime = 0;
   }
-}
-
-  // 🔊 trilha HBV (hbv1 → hbv4)
-if (["hbv1","hbv2","hbv3","hbv4"].includes(id)) {
-  // só toca se ainda não estiver tocando
-  if (hbvSound.paused) {
-    hbvSound.play().catch(()=>{});
-  }
-} else {
-  hbvSound.pause();
-  hbvSound.currentTime = 0;
 }
 
 const codes = {

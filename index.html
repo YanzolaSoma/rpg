@@ -295,24 +295,16 @@ setTimeout(() => {
       text.style.fontSize = "18px";
       text.style.lineHeight = "1.6";
 
-  if (value === "homens bem-vestidos") {
+ if (value === "homens bem-vestidos") {
 
   showScreen("pre");
 
   setTimeout(() => {
     showScreen("hbv1");
 
-    setTimeout(() => {
-      showScreen("hbv2");
-    }, 2500);
-
-    setTimeout(() => {
-      showScreen("hbv3");
-    }, 6000);
-
-    setTimeout(() => {
-      showScreen("hbv4");
-    }, 9400);
+    setTimeout(() => showScreen("hbv2"), 2500);
+    setTimeout(() => showScreen("hbv3"), 5800);
+    setTimeout(() => showScreen("hbv4"), 9400);
 
     setTimeout(() => {
       showScreen("final");
@@ -328,7 +320,7 @@ setTimeout(() => {
 
   return;
 }
-
+  
       if (["yan","yan massoni","magmapocket","magmapocket!"].includes(value)) {
 
   let img = document.createElement("img");

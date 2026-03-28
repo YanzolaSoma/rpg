@@ -123,11 +123,6 @@ function showScreen(id){
 
   // 🔊 CONTROLE DE ÁUDIO POR TELA
 
-  // bg (start)
-  if (id === "start") {
-  bgSound.play().catch(()=>{});
-}
-
   // beep (loading, connecting, pre)
   if (["loading","connecting","pre"].includes(id)) {
     beepSound.currentTime = 0;
@@ -225,10 +220,8 @@ function showLinesSequentially(element, text) {
   
 document.addEventListener("keydown", () => {
 
-// toca Ruído logo que a página carrega, em loop
-window.addEventListener("load", () => {
   bgSound.play().catch(()=>{});
-});
+  enterSound.play().catch(()=>{});
 
   showScreen("loading");
 

@@ -12,7 +12,7 @@ body {
   overflow: hidden;
   background: black;
   font-family: 'Press Start 2P', monospace;
-  color: yellow;
+  color: rgba(230,216,64,1);
 }
 
 .screen {
@@ -55,7 +55,7 @@ body {
   padding: 12px;
   font-size: 18px;
   border: 2px solid yellow;
-  background: rgba(255,255,0,1);
+  background: rgba(230,216,64,1);
   color: black;
   text-align: center;
   font-family: 'Press Start 2P', monospace;
@@ -114,9 +114,8 @@ const screens = ["start","loading","connecting","terminal","pre","result","final
 
 function showScreen(id){
 
-  // 🔊 Garantir que o Ruido toque em todas as telas
 if (["start","loading","connecting","terminal","pre","result","final","notfound"].includes(id)) {
-    bgSound.play().catch(()=>{});  // toca o Ruído
+    bgSound.play().catch(()=>{});
 }
 
   screens.forEach(s => {
@@ -132,15 +131,11 @@ if (["start","loading","connecting","terminal","pre","result","final","notfound"
     target.classList.add("show");
   }, 50);
 
-  // 🔊 CONTROLE DE ÁUDIO POR TELA
-
-  // beep (loading, connecting, pre)
   if (["loading","connecting","pre"].includes(id)) {
     beepSound.currentTime = 0;
     beepSound.play().catch(()=>{});
   }
 
-  // trilha loading + connecting
   if (id === "loading") {
     signalSound.play().catch(()=>{});
   }
@@ -150,7 +145,6 @@ if (["start","loading","connecting","terminal","pre","result","final","notfound"
     signalSound.currentTime = 0;
   }
 
-  // trilha pre
   if (id === "pre") {
     preSound.play().catch(()=>{});
   } else {
@@ -158,7 +152,6 @@ if (["start","loading","connecting","terminal","pre","result","final","notfound"
     preSound.currentTime = 0;
   }
 
-  // 🔊 HBV (hbv1 → hbv4)
 if (["hbv1","hbv2","hbv3","hbv4"].includes(id)) {
   hbvSound.play().catch(()=>{});
 } else {
@@ -166,7 +159,6 @@ if (["hbv1","hbv2","hbv3","hbv4"].includes(id)) {
   hbvSound.currentTime = 0;
 }
 
-  // 🔊 parar erro ao sair
 if (id === "final") {
   errorSound.pause();
   errorSound.currentTime = 0;
@@ -272,9 +264,9 @@ document.addEventListener("keydown", () => {
       loadingText.remove();
       showScreen("terminal");
       document.getElementById("inputBox").classList.remove("hidden");
-    }, 5000);
+    }, 6000);
 
-  }, 5000);
+  }, 6000);
 
 }, { once: true });
 
@@ -283,7 +275,6 @@ document.getElementById("codeInput").addEventListener("keydown", function(e){
 
     let value = this.value.toLowerCase().trim();
 
-// detectar alberto
 isAlberto = ["alberto", "alberto luci"].includes(value);
     this.value = "";
 
@@ -410,7 +401,7 @@ if (isAlberto) {
           document.getElementById("inputBox").classList.remove("hidden");
         }, 4000);
 
-      }, 8000);
+      }, 9000);
 
     }, 4000);
   }

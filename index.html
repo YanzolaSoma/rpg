@@ -82,10 +82,32 @@ body {
   <input id="codeInput" placeholder="AAAAAA" color="black">
 </div>
 
+<audio id="bgSound" src="Ruido.mp3" loop></audio>
+<audio id="enterSound" src="Entrada_CodInserido.mp3"></audio>
+<audio id="beepSound" src="Mensagem.mp3"></audio>
+<audio id="signalSound" src="CaptandoSinal.mp3" loop></audio>
+<audio id="preSound" src="Pre.mp3" loop></audio>
+  
 <script>
+
+const bgSound = document.getElementById("bgSound");
+const enterSound = document.getElementById("enterSound");
+const beepSound = document.getElementById("beepSound");
+const signalSound = document.getElementById("signalSound");
+const preSound = document.getElementById("preSound");
+
+function stopAllLoops() {
+  signalSound.pause();
+  signalSound.currentTime = 0;
+
+  preSound.pause();
+  preSound.currentTime = 0;
+}
+  
 const screens = ["start","loading","connecting","terminal","pre","result","final","notfound","hbv1","hbv2","hbv3","hbv4"];
 
 function showScreen(id){
+
   screens.forEach(s => {
     const el = document.getElementById(s);
     el.classList.add("hidden");
@@ -98,6 +120,32 @@ function showScreen(id){
   setTimeout(() => {
     target.classList.add("show");
   }, 50);
+
+  // 🔊 CONTROLE DE ÁUDIO POR TELA
+
+  // beep (loading, connecting, pre)
+  if (["loading","connecting","pre"].includes(id)) {
+    beepSound.currentTime = 0;
+    beepSound.play().catch(()=>{});
+  }
+
+  // trilha loading + connecting
+  if (id === "loading") {
+    signalSound.play().catch(()=>{});
+  }
+
+  if (id !== "loading" && id !== "connecting") {
+    signalSound.pause();
+    signalSound.currentTime = 0;
+  }
+
+  // trilha pre
+  if (id === "pre") {
+    preSound.play().catch(()=>{});
+  } else {
+    preSound.pause();
+    preSound.currentTime = 0;
+  }
 }
 
 const codes = {
@@ -171,6 +219,9 @@ function showLinesSequentially(element, text) {
 }
   
 document.addEventListener("keydown", () => {
+
+  bgSound.play().catch(()=>{});
+  enterSound.play().catch(()=>{});
 
   showScreen("loading");
 
@@ -290,6 +341,9 @@ setTimeout(() => {
 }
 
 if (codes[value]) {
+
+enterSound.currentTime = 0;
+enterSound.play().catch(()=>{});
 
   document.body.appendChild(text);
   showLinesSequentially(text, codes[value]);

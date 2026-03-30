@@ -233,10 +233,21 @@ const codes = {
 function showLinesSequentially(element, text) {
   const lines = text.split("\n");
   element.innerText = "";
+  element.style.display = "flex";
+  element.style.flexDirection = "column";
+  element.style.gap = "10px"; // Espaço fixo entre as linhas
 
-  lines.forEach((line, index) => {
+  lines.forEach((lineText, index) => {
+    const lineDiv = document.createElement("div");
+    lineDiv.innerText = lineText;
+    lineDiv.style.opacity = "0"; // Começa invisível
+    lineDiv.style.transition = "opacity 0.5s"; // Efeito de aparecer suave
+    lineDiv.style.height = "1.6em"; // Reserva o espaço da linha
+    element.appendChild(lineDiv);
+
+    // Revela a linha sem mover as outras
     setTimeout(() => {
-      element.innerText += (index > 0 ? "\n" : "") + line;
+      lineDiv.style.opacity = "1";
     }, index * 2000);
   });
 }
@@ -294,14 +305,15 @@ setTimeout(() => {
   preLoading.remove();
   showScreen("result");
 
-      let text = document.createElement("div");
-      text.style.position = "absolute";
-      text.style.top = "50%";
-      text.style.left = "50%";
-      text.style.transform = "translate(-50%, -50%)";
-      text.style.textAlign = "center";
-      text.style.fontSize = "18px";
-      text.style.lineHeight = "1.6";
+let text = document.createElement("div");
+text.style.position = "absolute";
+text.style.top = "50%";
+text.style.left = "50%";
+text.style.transform = "translate(-50%, -50%)";
+text.style.textAlign = "center";
+text.style.fontSize = "16px";
+text.style.width = "80%"; // Garante que ocupe a largura total
+text.style.minHeight = "150px"; // Reserva o espaço para as 4 linhas antes de aparecerem
 
  if (value === "homens bem-vestidos") {
 
